@@ -12,7 +12,6 @@ reset = "\u001b[0m"
 green = "\u001b[32m"
 magenta = "\u001b[35m"
 
-
 def argcheck():
     """ Checks CLI Arguments """
 
@@ -25,6 +24,8 @@ def argcheck():
     main(argument.wallets, argument.output)
 
 def main(wallets,output):
+    """ Main Entry Point of the Script """
+
     global NewWallets
     NewWallets = 0
     while NewWallets < wallets:
@@ -35,29 +36,40 @@ def main(wallets,output):
         print ("==================================================================================")
 
 def generate_wallet(wallets,output):
+    """ Handles all wallet Generation & Output """
+
     generate_keypair()
     generate_publickey()
     generate_privatekey()
     generate_output(wallets,output)
 
 def generate_keypair():
+    """ Generates a new SECP256K1 Key-Pair """
+
     global NewKeyPair
     NewKeyPair = PrivateKey()
 
 def generate_publickey():
+    """ Generates Public Key based on SECP256K1 Key-Pair """
+
     global Public_Key_Output
     pubkey_ripmd160hashed = hashlib.new('ripemd160',hashlib.sha256(NewKeyPair.pubkey.serialize()).digest()).hexdigest()
     Public_Key_Output = base58.b58encode(bytes.fromhex(VersionByte + pubkey_ripmd160hashed + hashlib.sha256(hashlib.sha256(bytes.fromhex(VersionByte + pubkey_ripmd160hashed)).digest()).hexdigest()[0:8]))
 
 def generate_privatekey():
+    """ Generates Private Key based on SECP256K1 Key-Pair """
+
     global WIF_Key_Output
     WIF_Key_Output = base58.b58encode(bytes.fromhex(WIFByte + NewKeyPair.serialize() + hashlib.sha256(hashlib.sha256(bytes.fromhex(WIFByte + NewKeyPair.serialize())).digest()).hexdigest()[0:8]))
 
 def generate_output(wallets,output):
+    """ Handles all output for the Script """
+
     if not output:
         print ("==================================================================================")
         print (green + "Bitcoin Private Key (WIF)  : " + reset + magenta + WIF_Key_Output.decode() + reset)
         print (green + "Bitcoin Public Key (P2PKH) : " + reset + magenta + Public_Key_Output.decode() + reset)
+
     if output:
 
         last_line = ""
