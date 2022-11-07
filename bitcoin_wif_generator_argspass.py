@@ -16,8 +16,8 @@ def argcheck():
     """ Checks CLI Arguments """
 
     parser = argparse.ArgumentParser(description = "Generate Bitcoin P2PKH Wallets.")
-    parser.add_argument("-w", "--wallets", help = "Example: Wallets argument", type=int, required = False, default = "1")
-    parser.add_argument("-o", "--output", help = "Example: Output argument", required = False)
+    parser.add_argument("-w", "--wallets", help = "Example: -w 5 (Generates 5 Wallets)", type=int, required = False, default = "1")
+    parser.add_argument("-o", "--output", help = "Example: -o example.txt (Stores Wallets in example.txt)", required = False)
 
     argument = parser.parse_args()
 
