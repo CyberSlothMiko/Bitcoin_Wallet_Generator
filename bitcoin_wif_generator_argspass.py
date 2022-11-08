@@ -18,6 +18,7 @@ def argcheck():
     parser = argparse.ArgumentParser(description = "Generate Bitcoin P2PKH Wallets.")
     parser.add_argument("-w", "--wallets", help = "Example: -w 5 (Generates 5 Wallets)", type=int, required = False, default = "1")
     parser.add_argument("-o", "--output", help = "Example: -o example.txt (Stores Wallets in example.txt)", required = False)
+    parser.add_argument("-ft", "--filetype", help = "Example: -ft fancy_txt (Generates fancy_txt output file)", required = False, choices=['fancy_txt','priv_pub_nl','priv_nl','pub_nl','priv_pub_csv','priv_csv','pub_csv'])
 
     argument = parser.parse_args()
 
