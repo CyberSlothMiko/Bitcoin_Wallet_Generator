@@ -114,13 +114,15 @@ def generate_output(filetype):
             print("priv_pub_csv_seperate")
             filename = "priv_seperate.csv"
             filename_pub = "pub_seperate.csv"
-            priv_pub_csv_seperate(filename,filename_pub)
+            filetype = "csv"
+            priv_pub_csv_nl_seperate(filename,filename_pub,filetype)
 
         case "priv_pub_nl_seperate":
             print("priv_pub_nl_seperate")
             filename = "priv_seperate.txt"
             filename_pub = "pub_seperate.txt"
-            priv_pub_nl_seperate(filename,filename_pub)
+            filetype = "txt"
+            priv_pub_csv_nl_seperate(filename,filename_pub,filetype)
 
         case _:
             print ("==================================================================================")
@@ -194,21 +196,19 @@ def generate_pub_csv(filename):
     with open(filename, 'a') as output_file:
         output_file.write(Public_Key_Output.decode() + ",\n")
 
-def priv_pub_nl_seperate(filename,filename_pub):
-    """ Outputs in the "priv_pub_nl_seperate" format """
-
-    with open(filename, 'a') as output_file:
-        output_file.write(WIF_Key_Output.decode() + "\n")
-    with open(filename_pub, 'a') as output_file:
-        output_file.write(Public_Key_Output.decode() + "\n")
-
-def priv_pub_csv_seperate(filename,filename_pub):
+def priv_pub_csv_nl_seperate(filename,filename_pub,filetype):
     """ Outputs in the "priv_pub_csv_seperate" format """
 
+    match filetype:
+        case "csv":
+            delimiter = ","
+        case _:
+            delimiter = ""
+
     with open(filename, 'a') as output_file:
-        output_file.write(WIF_Key_Output.decode() + "\n")
+        output_file.write(WIF_Key_Output.decode() + delimiter + "\n")
     with open(filename_pub, 'a') as output_file:
-        output_file.write(Public_Key_Output.decode() + "\n")
+        output_file.write(Public_Key_Output.decode() + delimiter + "\n")
 
 if __name__ == "__main__":
     """ Main entry point of the program"""
