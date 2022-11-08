@@ -90,13 +90,13 @@ def generate_publickey():
 
     global Public_Key_Output
     pubkey_ripmd160hashed = hashlib.new('ripemd160',hashlib.sha256(NewKeyPair.pubkey.serialize()).digest()).hexdigest()
-    Public_Key_Output = base58.b58encode(bytes.fromhex(VersionByte + pubkey_ripmd160hashed + hashlib.sha256(hashlib.sha256(bytes.fromhex(VersionByte + pubkey_ripmd160hashed)).digest()).hexdigest()[0:8]))
+    Public_Key_Output = base58.b58encode(bytes.fromhex(VersionByte + pubkey_ripmd160hashed + hashlib.sha256(hashlib.sha256(bytes.fromhex(VersionByte + pubkey_ripmd160hashed)).digest()).hexdigest()[0:8])).decode()
 
 def generate_privatekey():
     """ Generates Private Key based on SECP256K1 Key-Pair """
 
     global WIF_Key_Output
-    WIF_Key_Output = base58.b58encode(bytes.fromhex(WIFByte + NewKeyPair.serialize() + hashlib.sha256(hashlib.sha256(bytes.fromhex(WIFByte + NewKeyPair.serialize())).digest()).hexdigest()[0:8]))
+    WIF_Key_Output = base58.b58encode(bytes.fromhex(WIFByte + NewKeyPair.serialize() + hashlib.sha256(hashlib.sha256(bytes.fromhex(WIFByte + NewKeyPair.serialize())).digest()).hexdigest()[0:8])).decode()
     
 def generate_output(filetype):
     """ Handles output options for the Script """
@@ -106,47 +106,25 @@ def generate_output(filetype):
             filename = "fancy_txt.txt"
             generate_fancy_txt(filename)
         case "priv_pub_nl":
-            filename = "priv_pub_nl.txt"
-            delimiter = ""
-            generate_priv_and_pub_csv_or_nl(filename,delimiter)
+            generate_priv_and_pub_csv_or_nl("priv_pub_nl.txt","")
         case "priv_pub_csv":
-            filename = "priv_pub_csv.csv"
-            delimiter = ","
-            generate_priv_and_pub_csv_or_nl(filename,delimiter)
+            generate_priv_and_pub_csv_or_nl("priv_pub_csv.csv",",")
         case "priv_nl":
-            filename = "priv_nl.txt"
-            data = WIF_Key_Output.decode()
-            delimiter = ""
-            generate_priv_or_pub_csv_nl(filename,data,delimiter)
+            generate_priv_or_pub_csv_nl("priv_nl.txt",WIF_Key_Output,"")
         case "pub_nl":
-            filename = "pub_nl.txt"
-            data = Public_Key_Output.decode()
-            delimiter = ""
-            generate_priv_or_pub_csv_nl(filename,data,delimiter)
+            generate_priv_or_pub_csv_nl("pub_nl.txt",Public_Key_Output,"")
         case "priv_csv":
-            filename = "priv_csv.csv"
-            data = WIF_Key_Output.decode()
-            delimiter = ","
-            generate_priv_or_pub_csv_nl(filename,data,delimiter)
+            generate_priv_or_pub_csv_nl("priv_csv.csv",WIF_Key_Output,",")
         case "pub_csv":
-            filename = "pub_csv.csv"
-            data = Public_Key_Output.decode()
-            delimiter = ","
-            generate_priv_or_pub_csv_nl(filename,data,delimiter)
+            generate_priv_or_pub_csv_nl("pub_csv.csv",Public_Key_Output,",")
         case "priv_pub_csv_seperate":
-            filename = "priv_seperate.csv"
-            filename_pub = "pub_seperate.csv"
-            delimiter = ","
-            generate_priv_and_pub_csv_nl_seperate(filename,filename_pub,delimiter)
+            generate_priv_and_pub_csv_nl_seperate("priv_seperate.csv","pub_seperate.csv",",")
         case "priv_pub_nl_seperate":
-            filename = "priv_seperate.txt"
-            filename_pub = "pub_seperate.txt"
-            delimiter = ""
-            generate_priv_and_pub_csv_nl_seperate(filename,filename_pub,delimiter)
+            generate_priv_and_pub_csv_nl_seperate("priv_seperate.txt","pub_seperate.txt","")
         case _:
             print ("==================================================================================")
-            print (green + "Bitcoin Private Key (WIF)  : " + magenta + WIF_Key_Output.decode() + reset)
-            print (green + "Bitcoin Public Key (P2PKH) : " + magenta + Public_Key_Output.decode() + reset)
+            print (green + "Bitcoin Private Key (WIF)  : " + magenta + WIF_Key_Output + reset)
+            print (green + "Bitcoin Public Key (P2PKH) : " + magenta + Public_Key_Output + reset)
 
 def generate_fancy_txt(filename):
     """ Outputs in the "fancy_txt" format """
@@ -165,13 +143,13 @@ def generate_fancy_txt(filename):
     if last_line == "==================================================================================":
         with open(filename, 'a') as output_file:
             output_file.write("\n")
-            output_file.write("Bitcoin Private Key (WIF)  : " + WIF_Key_Output.decode() + "\n")
-            output_file.write("Bitcoin Public Key (P2PKH) : " + WIF_Key_Output.decode() + "\n")
+            output_file.write("Bitcoin Private Key (WIF)  : " + WIF_Key_Output + "\n")
+            output_file.write("Bitcoin Public Key (P2PKH) : " + Public_Key_Output + "\n")
     else:
         with open(filename, 'a') as output_file:
             output_file.write("==================================================================================\n")
-            output_file.write("Bitcoin Private Key (WIF)  : " + WIF_Key_Output.decode() + "\n")
-            output_file.write("Bitcoin Public Key (P2PKH) : " + WIF_Key_Output.decode() + "\n")
+            output_file.write("Bitcoin Private Key (WIF)  : " + WIF_Key_Output + "\n")
+            output_file.write("Bitcoin Public Key (P2PKH) : " + Public_Key_Output + "\n")
 
     if NewWallets == wallet_counter-1:
         with open(filename, 'a') as output_file:
@@ -181,8 +159,8 @@ def generate_priv_and_pub_csv_or_nl(filename,delimiter):
     """ Outputs in the "generate_priv_pub_nl" format """
 
     with open(filename, 'a') as output_file:
-        output_file.write(WIF_Key_Output.decode() + delimiter + "\n")
-        output_file.write(Public_Key_Output.decode() + delimiter + "\n")
+        output_file.write(WIF_Key_Output + delimiter + "\n")
+        output_file.write(Public_Key_Output + delimiter + "\n")
 
 def generate_priv_or_pub_csv_nl(filename,data,delimiter):
     """ Outputs in the "pub/priv_csv" format """
@@ -194,9 +172,9 @@ def generate_priv_and_pub_csv_nl_seperate(filename,filename_pub,delimiter):
     """ Outputs in the "priv_pub_seperate" format """
 
     with open(filename, 'a') as output_file:
-        output_file.write(WIF_Key_Output.decode() + delimiter + "\n")
+        output_file.write(WIF_Key_Output + delimiter + "\n")
     with open(filename_pub, 'a') as output_file:
-        output_file.write(Public_Key_Output.decode() + delimiter + "\n")
+        output_file.write(Public_Key_Output + delimiter + "\n")
 
 if __name__ == "__main__":
     """ Main entry point of the program"""
