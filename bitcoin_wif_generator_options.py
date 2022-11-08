@@ -20,7 +20,6 @@ def argcheck():
     parser.add_argument("-ft", "--filetype", help = "Example: -ft fancy_txt (Generates fancy_txt output file)", required = False, choices=['fancy_txt','priv_pub_nl','priv_nl','pub_nl','priv_pub_csv','priv_csv','pub_csv','priv_pub_csv_seperate','priv_pub_nl_seperate'])
 
     args = parser.parse_args()
-
     main(args.wallets, args.filetype)
 
 def main(wallets,filetype):
@@ -28,7 +27,7 @@ def main(wallets,filetype):
 
     global NewWallets
     NewWallets = 0
-
+    
     global wallet_counter
     wallet_counter = wallets
 
@@ -39,6 +38,39 @@ def main(wallets,filetype):
     if filetype == None:
         print ("==================================================================================")
 
+    filename1 = None
+    filename2 = None
+
+    if filetype:
+        match filetype:
+            case "fancy_txt":
+                filename1 = green + "Output saved to : " + magenta + "fancy_txt.txt"
+            case "priv_pub_nl":
+                filename1 = green + "Output saved to : " + magenta + "priv_pub_nl.txt"
+            case "priv_nl":
+                filename1 = green + "Output saved to : " + magenta + "priv_nl.txt"
+            case "pub_nl":
+                filename1 = green + "Output saved to : " + magenta + "pub_nl.txt"
+            case "priv_pub_csv":
+                filename1 = green + "Output saved to : " + magenta + "priv_pub_csv.csv"
+            case "priv_csv":
+                filename1 = green + "Output saved to : " + magenta + "priv_csv.csv"
+            case "pub_csv":
+                filename1 = green + "Output saved to : " + magenta + "pub_csv.csv"
+            case "priv_pub_csv_seperate":
+                filename1 = green + "Private Key output saved to : " + magenta + "priv_seperate.csv\n"
+                filename2 = green + "Public  Key output saved to : " + magenta + "pub_seperate.csv"
+            case "priv_pub_nl_seperate":
+                filename1 = green + "Private Key output saved to : " + magenta + "priv_seperate.txt\n"
+                filename2 = green + "Public  Key output saved to : " + magenta + "pub_seperate.txt"
+            case _:
+                print ("Impossible!")
+    
+    if filename1 and not filename2:
+        print(filename1)
+    if filename1 and filename2:
+        print (filename1 + filename2)
+
 def generate_wallet(filetype):
     """ Handles all wallet Generation & Output """
 
@@ -46,7 +78,7 @@ def generate_wallet(filetype):
     generate_publickey()
     generate_privatekey()
     generate_output(filetype)
-
+    
 def generate_keypair():
     """ Generates a new SECP256K1 Key-Pair """
 
@@ -71,63 +103,50 @@ def generate_output(filetype):
 
     match filetype:
         case "fancy_txt":
-            print("fancy_txt")
             filename = "fancy_txt.txt"
             generate_fancy_txt(filename)
-
         case "priv_pub_nl":
-            print("priv_pub_nl")
             filename = "priv_pub_nl.txt"
-            generate_priv_pub_nl(filename)
-
-        case "priv_nl":
-            print("priv_nl")
-            filename = "priv_nl.txt"
-            generate_priv_nl(filename)
-
-        case "pub_nl":
-            print("pub_nl")
-            filename = "pub_nl.txt"
-            generate_pub_nl(filename)
-
+            delimiter = ""
+            generate_priv_and_pub_csv_or_nl(filename,delimiter)
         case "priv_pub_csv":
-            print("priv_pub_csv")
             filename = "priv_pub_csv.csv"
-            generate_priv_pub_csv(filename)
-
+            delimiter = ","
+            generate_priv_and_pub_csv_or_nl(filename,delimiter)
+        case "priv_nl":
+            filename = "priv_nl.txt"
+            data = WIF_Key_Output.decode()
+            delimiter = ""
+            generate_priv_or_pub_csv_nl(filename,data,delimiter)
+        case "pub_nl":
+            filename = "pub_nl.txt"
+            data = Public_Key_Output.decode()
+            delimiter = ""
+            generate_priv_or_pub_csv_nl(filename,data,delimiter)
         case "priv_csv":
-            print("priv_csv")
             filename = "priv_csv.csv"
-            generate_priv_csv(filename)
-
+            data = WIF_Key_Output.decode()
+            delimiter = ","
+            generate_priv_or_pub_csv_nl(filename,data,delimiter)
         case "pub_csv":
-            print("pub_csv")
             filename = "pub_csv.csv"
-            generate_pub_csv(filename)
-
-        case "pub_csv":
-            print("pub_csv")
-            filename = "pub_csv.csv"
-            generate_pub_csv(filename)
-
+            data = Public_Key_Output.decode()
+            delimiter = ","
+            generate_priv_or_pub_csv_nl(filename,data,delimiter)
         case "priv_pub_csv_seperate":
-            print("priv_pub_csv_seperate")
             filename = "priv_seperate.csv"
             filename_pub = "pub_seperate.csv"
-            filetype = "csv"
-            priv_pub_csv_nl_seperate(filename,filename_pub,filetype)
-
+            delimiter = ","
+            generate_priv_and_pub_csv_nl_seperate(filename,filename_pub,delimiter)
         case "priv_pub_nl_seperate":
-            print("priv_pub_nl_seperate")
             filename = "priv_seperate.txt"
             filename_pub = "pub_seperate.txt"
-            filetype = "txt"
-            priv_pub_csv_nl_seperate(filename,filename_pub,filetype)
-
+            delimiter = ""
+            generate_priv_and_pub_csv_nl_seperate(filename,filename_pub,delimiter)
         case _:
             print ("==================================================================================")
-            print (green + "Bitcoin Private Key (WIF)  : " + reset + magenta + WIF_Key_Output.decode() + reset)
-            print (green + "Bitcoin Public Key (P2PKH) : " + reset + magenta + Public_Key_Output.decode() + reset)
+            print (green + "Bitcoin Private Key (WIF)  : " + magenta + WIF_Key_Output.decode() + reset)
+            print (green + "Bitcoin Public Key (P2PKH) : " + magenta + Public_Key_Output.decode() + reset)
 
 def generate_fancy_txt(filename):
     """ Outputs in the "fancy_txt" format """
@@ -158,52 +177,21 @@ def generate_fancy_txt(filename):
         with open(filename, 'a') as output_file:
             output_file.write("==================================================================================")
 
-def generate_priv_pub_nl(filename):
+def generate_priv_and_pub_csv_or_nl(filename,delimiter):
     """ Outputs in the "generate_priv_pub_nl" format """
 
     with open(filename, 'a') as output_file:
-        output_file.write(WIF_Key_Output.decode() + "\n")
-        output_file.write(Public_Key_Output.decode() + "\n")
+        output_file.write(WIF_Key_Output.decode() + delimiter + "\n")
+        output_file.write(Public_Key_Output.decode() + delimiter + "\n")
 
-def generate_priv_nl(filename):
-    """ Outputs in the "generate_priv_nl" format """
-
-    with open(filename, 'a') as output_file:
-        output_file.write(WIF_Key_Output.decode() + "\n")
-
-def generate_pub_nl(filename):
-    """ Outputs in the "generate_pub_nl" format """
+def generate_priv_or_pub_csv_nl(filename,data,delimiter):
+    """ Outputs in the "pub/priv_csv" format """
 
     with open(filename, 'a') as output_file:
-        output_file.write(Public_Key_Output.decode() + "\n")
+        output_file.write(data + delimiter + "\n")
 
-def generate_priv_pub_csv(filename):
-    """ Outputs in the "generate_priv_pub_csv" format """
-
-    with open(filename, 'a') as output_file:
-        output_file.write(WIF_Key_Output.decode() + ",")
-        output_file.write(Public_Key_Output.decode() + ",\n")
-
-def generate_priv_csv(filename):
-    """ Outputs in the "generate_priv_csv" format """
-
-    with open(filename, 'a') as output_file:
-        output_file.write(WIF_Key_Output.decode() + ",\n")
-
-def generate_pub_csv(filename):
-    """ Outputs in the "generate_pub_csv" format """
-
-    with open(filename, 'a') as output_file:
-        output_file.write(Public_Key_Output.decode() + ",\n")
-
-def priv_pub_csv_nl_seperate(filename,filename_pub,filetype):
+def generate_priv_and_pub_csv_nl_seperate(filename,filename_pub,delimiter):
     """ Outputs in the "priv_pub_seperate" format """
-
-    match filetype:
-        case "csv":
-            delimiter = ","
-        case _:
-            delimiter = ""
 
     with open(filename, 'a') as output_file:
         output_file.write(WIF_Key_Output.decode() + delimiter + "\n")
