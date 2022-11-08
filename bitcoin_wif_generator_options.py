@@ -67,7 +67,7 @@ def generate_privatekey():
     WIF_Key_Output = base58.b58encode(bytes.fromhex(WIFByte + NewKeyPair.serialize() + hashlib.sha256(hashlib.sha256(bytes.fromhex(WIFByte + NewKeyPair.serialize())).digest()).hexdigest()[0:8]))
     
 def generate_output(filetype):
-    """ Handles all output for the Script """
+    """ Handles output options for the Script """
 
     match filetype:
         case "fancy_txt":
@@ -128,6 +128,7 @@ def generate_output(filetype):
             print (green + "Bitcoin Public Key (P2PKH) : " + reset + magenta + Public_Key_Output.decode() + reset)
 
 def generate_fancy_txt(filename):
+    """ Outputs in the "fancy_txt" format """
 
     last_line = ""
 
@@ -156,38 +157,54 @@ def generate_fancy_txt(filename):
             output_file.write("==================================================================================")
 
 def generate_priv_pub_nl(filename):
+    """ Outputs in the "generate_priv_pub_nl" format """
+
     with open(filename, 'a') as output_file:
         output_file.write(WIF_Key_Output.decode() + "\n")
         output_file.write(Public_Key_Output.decode() + "\n")
 
 def generate_priv_nl(filename):
+    """ Outputs in the "generate_priv_nl" format """
+
     with open(filename, 'a') as output_file:
         output_file.write(WIF_Key_Output.decode() + "\n")
 
 def generate_pub_nl(filename):
+    """ Outputs in the "generate_pub_nl" format """
+
     with open(filename, 'a') as output_file:
         output_file.write(Public_Key_Output.decode() + "\n")
 
 def generate_priv_pub_csv(filename):
+    """ Outputs in the "generate_priv_pub_csv" format """
+
     with open(filename, 'a') as output_file:
         output_file.write(WIF_Key_Output.decode() + ",")
         output_file.write(Public_Key_Output.decode() + ",\n")
 
 def generate_priv_csv(filename):
+    """ Outputs in the "generate_priv_csv" format """
+
     with open(filename, 'a') as output_file:
         output_file.write(WIF_Key_Output.decode() + ",\n")
 
 def generate_pub_csv(filename):
+    """ Outputs in the "generate_pub_csv" format """
+
     with open(filename, 'a') as output_file:
         output_file.write(Public_Key_Output.decode() + ",\n")
 
 def priv_pub_nl_seperate(filename,filename_pub):
+    """ Outputs in the "priv_pub_nl_seperate" format """
+
     with open(filename, 'a') as output_file:
         output_file.write(WIF_Key_Output.decode() + "\n")
     with open(filename_pub, 'a') as output_file:
         output_file.write(Public_Key_Output.decode() + "\n")
 
 def priv_pub_csv_seperate(filename,filename_pub):
+    """ Outputs in the "priv_pub_csv_seperate" format """
+
     with open(filename, 'a') as output_file:
         output_file.write(WIF_Key_Output.decode() + "\n")
     with open(filename_pub, 'a') as output_file:
