@@ -197,7 +197,7 @@ def generate_pub_csv(filename):
         output_file.write(Public_Key_Output.decode() + ",\n")
 
 def priv_pub_csv_nl_seperate(filename,filename_pub,filetype):
-    """ Outputs in the "priv_pub_csv_seperate" format """
+    """ Outputs in the "priv_pub_seperate" format """
 
     match filetype:
         case "csv":
