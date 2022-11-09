@@ -131,15 +131,17 @@ After following the insillation instructions above, you can run the following:
 3. Running the `btc_cliargs_meoo` script examples
 
   List of `-ft` options:
-    1. `-ft fancy_txt`             - Saves to file in Default Console output as .txt
-    2. `-ft priv_pub_nl`           - Saves to file `priv` and `pub` key each on new line with no delimiter as .txt
-    3. `-ft priv_nl`               - Saves to file `priv` key on new line with no delimiter as .txt
-    4. `-ft pub_nl`                - Saves to file `pub` key on new line with no delimiter as .txt
-    5. `-ft priv_pub_csv`          - Saves to file `priv` and `pub` key each on new line with `,` delimiter as .csv
-    6. `-ft priv_csv`              - Saves to file `priv` on new line with `,` delimiter as .csv
-    7. `-ft pub_csv`               - Saves to file `pub` on new line with `,` delimiter as .csv
-    8. `-ft priv_pub_csv_seperate` - Saves to file `priv` and `pub` key each on new line with `,` delimiter as seperate .csv files
-    9. `-ft priv_pub_nl_seperate`  - Saves to file `priv` and `pub` key each on new line with no delimiter as seperate .csv files
+  |Flag|Usage|
+  |--|--|
+  |`-ft fancy_txt`|Saves to file in Default Console output as .txt|
+  |`-ft priv_pub_nl`|Saves to file `priv` and `pub` key each on new line with no delimiter as .txt|
+  |`-ft priv_nl`|Saves to file `priv` key on new line with no delimiter as .txt|
+  |`-ft pub_nl`|Saves to file `pub` key on new line with no delimiter as .txt|
+  |`-ft priv_pub_csv`|Saves to file `priv` and `pub` key each on new line with `,` delimiter as .csv|
+  |`-ft priv_csv`|Saves to file `priv` on new line with `,` delimiter as .csv|
+  |`-ft pub_csv`|Saves to file `pub` on new line with `,` delimiter as .csv|
+  |`-ft priv_pub_csv_seperate`|Saves to file `priv` and `pub` key each on new line with `,` delimiter as seperate .csv files|
+  |`-ft priv_pub_nl_seperate`|Saves to file `priv` and `pub` key each on new line with no delimiter as seperate .csv files|
      
    ```bash
    python3 btc_cliargs_meoo.py                        # Default output to console
