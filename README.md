@@ -117,17 +117,36 @@ Python3
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-After following the insillation instructions above, you can run the below command to view some examples
+After following the insillation instructions above, you can run the following:
 
-1. Walking example
+1. Enter the python3 venv (This example is from inside `Bitcoin_Wallet_Generator` directory)
    ```bash
-   ./run.sh walking
+   . .venv/bin/activate
    ```
-2. Running example
+2. Running the `btc_simple_*` scripts
    ```bash
-   ./run.sh running
+   python3 btc_simple_comments.py
+   python3 btc_simple_oo.py
    ```
+3. Running the `btc_cliargs_meoo` script examples
 
+  List of `-ft` options:
+    1. `-ft fancy_txt`             - Saves to file in Default Console output as .txt
+    2. `-ft priv_pub_nl`           - Saves to file `priv` and `pub` key each on new line with no delimiter as .txt
+    3. `-ft priv_nl`               - Saves to file `priv` key on new line with no delimiter as .txt
+    4. `-ft pub_nl`                - Saves to file `pub` key on new line with no delimiter as .txt
+    5. `-ft priv_pub_csv`          - Saves to file `priv` and `pub` key each on new line with `,` delimiter as .csv
+    6. `-ft priv_csv`              - Saves to file `priv` on new line with `,` delimiter as .csv
+    7. `-ft pub_csv`               - Saves to file `pub` on new line with `,` delimiter as .csv
+    8. `-ft priv_pub_csv_seperate` - Saves to file `priv` and `pub` key each on new line with `,` delimiter as seperate .csv files
+    9. `-ft priv_pub_nl_seperate`  - Saves to file `priv` and `pub` key each on new line with no delimiter as seperate .csv files
+     ```bash
+   python3 btc_cliargs_meoo.py                        # Default output to console
+   python3 btc_cliargs_meoo.py -h                     # Displays the help information for the script & options for the -ft flag
+   python3 btc_cliargs_meoo.py -w 3                   # Default output to console with -w flag to generate 3 wallets
+   python3 btc_cliargs_meoo.py -w 3 -ft fancy_txt     # Saves output to a file in "fancy_txt" format, -w flag to generate 3 wallets
+   python3 btc_cliargs_meoo.py -w 3 -ft priv_pub_csv  # Saves output to a file in "priv_pub_csv" format, -w flag to generate 3 wallets
+   ```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
