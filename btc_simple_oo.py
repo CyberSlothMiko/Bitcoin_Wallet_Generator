@@ -3,6 +3,7 @@
 from secp256k1 import PrivateKey
 import hashlib
 import base58
+import datetime
 
 VersionByte = "00"
 WIFByte = "80"
@@ -37,4 +38,10 @@ def generate_output():
     print ("==================================================================================")
 
 if __name__ == "__main__":
+    """ Main entry point of the program"""
+
+    start_time = datetime.datetime.now()
     main()
+    end_time = datetime.datetime.now()
+    print("Time to complete: " + str(end_time - start_time))
+    print("==================================================================================")

@@ -47,33 +47,38 @@ def main(wallets,filetype):
     if filetype:
         match filetype:
             case "fancy_txt":
-                filename1 = green + "Output saved to : " + magenta + "fancy_txt.txt"
+                filename1 = green + "Output saved to : " + magenta + "fancy_txt.txt" + reset
             case "priv_pub_nl":
-                filename1 = green + "Output saved to : " + magenta + "priv_pub_nl.txt"
+                filename1 = green + "Output saved to : " + magenta + "priv_pub_nl.txt" + reset
             case "priv_nl":
-                filename1 = green + "Output saved to : " + magenta + "priv_nl.txt"
+                filename1 = green + "Output saved to : " + magenta + "priv_nl.txt" + reset
             case "pub_nl":
-                filename1 = green + "Output saved to : " + magenta + "pub_nl.txt"
+                filename1 = green + "Output saved to : " + magenta + "pub_nl.txt" + reset
             case "priv_pub_csv":
-                filename1 = green + "Output saved to : " + magenta + "priv_pub_csv.csv"
+                filename1 = green + "Output saved to : " + magenta + "priv_pub_csv.csv" + reset
             case "priv_csv":
-                filename1 = green + "Output saved to : " + magenta + "priv_csv.csv"
+                filename1 = green + "Output saved to : " + magenta + "priv_csv.csv" + reset
             case "pub_csv":
-                filename1 = green + "Output saved to : " + magenta + "pub_csv.csv"
+                filename1 = green + "Output saved to : " + magenta + "pub_csv.csv" + reset
             case "priv_pub_csv_seperate":
-                filename1 = green + "Private Key output saved to : " + magenta + "priv_seperate.csv\n"
-                filename2 = green + "Public  Key output saved to : " + magenta + "pub_seperate.csv"
+                filename1 = green + "Private Key output saved to : " + magenta + "priv_seperate.csv\n" + reset
+                filename2 = green + "Public  Key output saved to : " + magenta + "pub_seperate.csv" + reset
             case "priv_pub_nl_seperate":
-                filename1 = green + "Private Key output saved to : " + magenta + "priv_seperate.txt\n"
-                filename2 = green + "Public  Key output saved to : " + magenta + "pub_seperate.txt"
+                filename1 = green + "Private Key output saved to : " + magenta + "priv_seperate.txt\n" + reset
+                filename2 = green + "Public  Key output saved to : " + magenta + "pub_seperate.txt" + reset
             case _:
                 print ("Impossible!")
-    
-    if filename1 and not filename2:
-        print(filename1)
-    if filename1 and filename2:
-        print (filename1 + filename2)
 
+    if filename1 and not filename2:
+        print("==================================================================================")
+        print(filename1)
+        print("==================================================================================")
+    if filename1 and filename2:
+        print("==================================================================================")
+        print (filename1 + filename2)
+        print("==================================================================================")
+
+    
 def generate_wallet(filetype):
     """ Handles all wallet Generation & Output """
 
@@ -243,7 +248,9 @@ def generate_priv_and_pub_csv_nl_seperate(filename,filename_pub,delimiter):
 
 if __name__ == "__main__":
     """ Main entry point of the program"""
+
     start_time = datetime.datetime.now()
     argcheck()
     end_time = datetime.datetime.now()
-    print(end_time - start_time)
+    print(green + "Time to complete: " + magenta + str(end_time - start_time) + reset)
+    print("==================================================================================")
