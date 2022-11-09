@@ -128,21 +128,7 @@ After following the insillation instructions above, you can run the following:
    python3 btc_simple_comments.py
    python3 btc_simple_oo.py
    ```
-3. Running the `btc_cliargs_meoo` script examples
-
-  List of `-ft` options:
-  |Flag|Usage|
-  |--|--|
-  |`-ft fancy_txt`|Saves to file in Default Console output as .txt|
-  |`-ft priv_pub_nl`|Saves to file `priv` and `pub` key each on new line with no delimiter as .txt|
-  |`-ft priv_nl`|Saves to file `priv` key on new line with no delimiter as .txt|
-  |`-ft pub_nl`|Saves to file `pub` key on new line with no delimiter as .txt|
-  |`-ft priv_pub_csv`|Saves to file `priv` and `pub` key each on new line with `,` delimiter as .csv|
-  |`-ft priv_csv`|Saves to file `priv` on new line with `,` delimiter as .csv|
-  |`-ft pub_csv`|Saves to file `pub` on new line with `,` delimiter as .csv|
-  |`-ft priv_pub_csv_seperate`|Saves to file `priv` and `pub` key each on new line with `,` delimiter as seperate .csv files|
-  |`-ft priv_pub_nl_seperate`|Saves to file `priv` and `pub` key each on new line with no delimiter as seperate .csv files|
-     
+3. Running the `btc_cliargs_meoo` script examples     
    ```bash
    python3 btc_cliargs_meoo.py                        # Default output to console
    python3 btc_cliargs_meoo.py -h                     # Displays the help information for the script & options for the -ft flag
@@ -150,6 +136,19 @@ After following the insillation instructions above, you can run the following:
    python3 btc_cliargs_meoo.py -w 3 -ft fancy_txt     # Saves output to a file in "fancy_txt" format, -w flag to generate 3 wallets
    python3 btc_cliargs_meoo.py -w 3 -ft priv_pub_csv  # Saves output to a file in "priv_pub_csv" format, -w flag to generate 3 wallets
    ```
+   List of `-ft` options:
+   |Flag|Usage|
+   |--|--|
+   |`-ft fancy_txt`|Saves to file in Default Console output as .txt|
+   |`-ft priv_pub_nl`|Saves to file `priv` and `pub` key each on new line with no delimiter as .txt|
+   |`-ft priv_nl`|Saves to file `priv` key on new line with no delimiter as .txt|
+   |`-ft pub_nl`|Saves to file `pub` key on new line with no delimiter as .txt|
+   |`-ft priv_pub_csv`|Saves to file `priv` and `pub` key each on new line with `,` delimiter as .csv|
+   |`-ft priv_csv`|Saves to file `priv` on new line with `,` delimiter as .csv|
+   |`-ft pub_csv`|Saves to file `pub` on new line with `,` delimiter as .csv|
+   |`-ft priv_pub_csv_seperate`|Saves to file `priv` and `pub` key each on new line with `,` delimiter as seperate .csv files|
+   |`-ft priv_pub_nl_seperate`|Saves to file `priv` and `pub` key each on new line with no delimiter as seperate .csv files|
+   
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
