@@ -151,7 +151,7 @@ After following the insillation instructions above, you can run the following:
 
    Whats the diffrence between `btc_cliargs_tioo.py` and `btc_cliargs_meoo.py`?
 
-   `btc_cliargs_tioo.py` is time optimized and uses lists to store the value before writing to the file (crashes could result in no data being saved)
+   `btc_cliargs_tioo.py` is time optimized and uses lists to store the value before writing to the file (crashes could result in no data being saved)<br>
    `btc_cliargs_meoo.py` is memory optimized and writes each generated key to the file as its generated (crashes could result in some data being saved)
    
    `btc_cliargs_tioo.py` is **Significantly** faster than `btc_cliargs_meoo.py`
