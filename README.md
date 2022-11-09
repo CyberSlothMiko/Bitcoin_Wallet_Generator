@@ -140,7 +140,8 @@ After following the insillation instructions above, you can run the following:
     7. `-ft pub_csv`               - Saves to file `pub` on new line with `,` delimiter as .csv
     8. `-ft priv_pub_csv_seperate` - Saves to file `priv` and `pub` key each on new line with `,` delimiter as seperate .csv files
     9. `-ft priv_pub_nl_seperate`  - Saves to file `priv` and `pub` key each on new line with no delimiter as seperate .csv files
-     ```bash
+     
+   ```bash
    python3 btc_cliargs_meoo.py                        # Default output to console
    python3 btc_cliargs_meoo.py -h                     # Displays the help information for the script & options for the -ft flag
    python3 btc_cliargs_meoo.py -w 3                   # Default output to console with -w flag to generate 3 wallets
