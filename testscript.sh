@@ -1,0 +1,9 @@
+/home/ubuntu/Bitcoin_Wallet_Generator/.venv/bin/python /home/ubuntu/Bitcoin_Wallet_Generator/btc_cliargs_fast_oo_v2.py -w 3 -ft fancy_txt
+/home/ubuntu/Bitcoin_Wallet_Generator/.venv/bin/python /home/ubuntu/Bitcoin_Wallet_Generator/btc_cliargs_fast_oo_v2.py -w 3 -ft priv_pub_nl
+/home/ubuntu/Bitcoin_Wallet_Generator/.venv/bin/python /home/ubuntu/Bitcoin_Wallet_Generator/btc_cliargs_fast_oo_v2.py -w 3 -ft priv_nl
+/home/ubuntu/Bitcoin_Wallet_Generator/.venv/bin/python /home/ubuntu/Bitcoin_Wallet_Generator/btc_cliargs_fast_oo_v2.py -w 3 -ft pub_nl
+/home/ubuntu/Bitcoin_Wallet_Generator/.venv/bin/python /home/ubuntu/Bitcoin_Wallet_Generator/btc_cliargs_fast_oo_v2.py -w 3 -ft priv_pub_csv
+/home/ubuntu/Bitcoin_Wallet_Generator/.venv/bin/python /home/ubuntu/Bitcoin_Wallet_Generator/btc_cliargs_fast_oo_v2.py -w 3 -ft priv_csv
+/home/ubuntu/Bitcoin_Wallet_Generator/.venv/bin/python /home/ubuntu/Bitcoin_Wallet_Generator/btc_cliargs_fast_oo_v2.py -w 3 -ft pub_csv
+/home/ubuntu/Bitcoin_Wallet_Generator/.venv/bin/python /home/ubuntu/Bitcoin_Wallet_Generator/btc_cliargs_fast_oo_v2.py -w 3 -ft priv_pub_csv_seperate
+/home/ubuntu/Bitcoin_Wallet_Generator/.venv/bin/python /home/ubuntu/Bitcoin_Wallet_Generator/btc_cliargs_fast_oo_v2.py -w 3 -ft priv_pub_nl_seperate
