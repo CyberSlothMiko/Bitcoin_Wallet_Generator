@@ -128,7 +128,7 @@ After following the insillation instructions above, you can run the following:
    python3 btc_simple_comments.py
    python3 btc_simple_oo.py
    ```
-3. Running the `btc_cliargs_meoo` script examples     
+3. Running the `btc_cliargs_*` script examples     
    ```bash
    python3 btc_cliargs_meoo.py                        # Default output to console
    python3 btc_cliargs_meoo.py -h                     # Displays the help information for the script & options for the -ft flag
@@ -148,7 +148,13 @@ After following the insillation instructions above, you can run the following:
    |`-ft pub_csv`|Saves to file `pub` on new line with `,` delimiter as .csv|
    |`-ft priv_pub_csv_seperate`|Saves to file `priv` and `pub` key each on new line with `,` delimiter as seperate .csv files|
    |`-ft priv_pub_nl_seperate`|Saves to file `priv` and `pub` key each on new line with no delimiter as seperate .csv files|
+
+   Whats the diffrence between `btc_cliargs_tioo.py` and `btc_cliargs_meoo.py`?
+
+   `btc_cliargs_tioo.py` is time optimized and uses lists to store the value before writing to the file (crashes could result in no data being saved)
+   `btc_cliargs_meoo.py` is memory optimized and writes each generated key to the file as its generated (crashes could result in some data being saved)
    
+   `btc_cliargs_tioo.py` is **Significantly** faster than `btc_cliargs_meoo.py`
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
