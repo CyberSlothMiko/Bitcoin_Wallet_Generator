@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/CyberSlothMiko/Bitcoin_Wallet_Generator">
-    <img src="images/Logo.png" alt="Logo" width="200" height="99">
+    <img src="images/Logo.png" alt="Logo" width="200" height="200">
   </a>
   <p align="center">
     Generate (P2PKH) Bitcoin Main-net Wallets in WIF.
@@ -47,27 +47,27 @@ There were quite a few iterations along the way and a few variations and conside
 <div align="center"><h3>Example Output</h3></div>
 <div align="center"><h4>btc_simple_comments</h4></div>
 <div align="center">
-  <img src="images/btc_simple_comments.png" alt="Logo" width="448" height="147">
+  <img src="images/btc_simple_comments.png" alt="Logo">
 </div>
 <div align="center"><h4>btc_simple_oo</h4></div>
 <div align="center">
-  <img src="images/btc_simple_oo.png" alt="Logo" width="448" height="147">
+  <img src="images/btc_simple_oo.png" alt="Logo">
 </div>
 <div align="center"><h4>btc_cliargs_meoo default output</h4></div>
 <div align="center">
-  <img src="images/btc_cliargs_meoo_1.png" alt="Logo" width="448" height="147">
+  <img src="images/btc_cliargs_meoo_1.png" alt="Logo">
 </div>
 <div align="center"><h4>btc_cliargs_meoo help menu</h4></div>
 <div align="center">
-  <img src="images/btc_cliargs_meoo_2.png" alt="Logo" width="448" height="147">
+  <img src="images/btc_cliargs_meoo_2.png" alt="Logo">
 </div>
 <div align="center"><h4>btc_cliargs_meoo -w flag </h4></div>
 <div align="center">
-  <img src="images/btc_cliargs_meoo_3.png" alt="Logo" width="448" height="147">
+  <img src="images/btc_cliargs_meoo_3.png" alt="Logo">
 </div>
 <div align="center"><h4>btc_cliargs_meoo -w flag and -ft flag</h4></div>
 <div align="center">
-  <img src="images/btc_cliargs_meoo_4.png" alt="Logo" width="448" height="147">
+  <img src="images/btc_cliargs_meoo_4.png" alt="Logo">
 </div>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
