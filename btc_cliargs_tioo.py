@@ -7,7 +7,6 @@ import argparse
 import os
 import datetime
 
-
 VersionByte = "00"
 WIFByte = "80"
 reset = "\u001b[0m"

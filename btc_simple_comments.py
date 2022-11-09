@@ -4,6 +4,9 @@
 from secp256k1 import PrivateKey
 import hashlib
 import base58
+import datetime
+
+start_time = datetime.datetime.now()
 
 ##### VERSION BYTES #####
 VersionByte = "00"
@@ -69,3 +72,6 @@ print ('========================================================================
 print (green + "Bitcoin Private Key (WIF)        : " + reset + magenta + WIF_Key_Output.decode() + reset)
 print (green + "Bitcoin Public Key               : " + reset + magenta + Public_Key_Output.decode() + reset)
 print ('==================================================================================')
+end_time = datetime.datetime.now()
+print(green + "Time to complete: " + magenta + str(end_time - start_time) + reset)
+print("==================================================================================")

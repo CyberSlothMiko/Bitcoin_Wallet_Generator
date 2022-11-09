@@ -43,5 +43,5 @@ if __name__ == "__main__":
     start_time = datetime.datetime.now()
     main()
     end_time = datetime.datetime.now()
-    print("Time to complete: " + str(end_time - start_time))
+    print(green + "Time to complete: " + magenta + str(end_time - start_time) + reset)
     print("==================================================================================")
